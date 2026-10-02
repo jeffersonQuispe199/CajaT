@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Diario de Taxi</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Chart.js para gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- FONDO DE LÍNEAS ANIMADAS -->
+  <div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="app-container">
+    <header class="header">
+      <div class="logo-container">
+        <img src="logo.png" alt="Logo JQ Jefferson" class="logo-img">
+      </div>
+       <h1>ControTax</h1>
+      <h2>Control de ingresos Unidad Taxi 47</h2>
+      <p>Registro de ingresos de la unidad 47 y gastos por jornada</p>
+      <p class="tagline">Gasta menos y ahorra más</p>
+    </header>
+
+    <!-- LAYOUT PRINCIPAL -->
+    <div class="main-layout">
+      
+      <!-- COLUMNA IZQUIERDA -->
+      <div class="layout-col">
+        <section class="card">
+          <h2 id="formTitle">Registrar Día</h2>
+          <form id="taxiForm">
+            <input type="hidden" id="editId">
+
+            <div class="form-group">
+              <label for="fecha">Fecha</label>
+              <input type="date" id="fecha" required>
+            </div>
+
+            <div class="form-group">
+              <label for="ingreso">Total Recaudado ($)</label>
+              <input type="number" step="0.01" id="ingreso" placeholder="0.00" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="gasolina">Gasolina ($)</label>
+                <input type="number" step="0.01" id="gasolina" placeholder="0.00">
+              </div>
+              <div class="form-group">
+                <label for="otrosGastos">Otros Gastos ($)</label>
+                <input type="number" step="0.01" id="otrosGastos" placeholder="0.00">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="nota">Detalle otros gastos (opcional)</label>
+              <input type="text" id="nota" placeholder="Almuerzo, lavada, repuesto...">
+            </div>
+
+            <div class="button-group">
+              <button type="submit" id="btnGuardar" class="btn btn-primary">Guardar Registro</button>
+              <button type="button" id="btnCancelar" class="btn btn-secondary hidden">Cancelar</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="summary-grid">
+          <div class="summary-card">
+            <span class="summary-label">Total Bruto</span>
+            <span id="resumenBruto" class="summary-value text-gray">$0.00</span>
+          </div>
+          <div class="summary-card">
+            <span class="summary-label">Total Gastos</span>
+            <span id="resumenGastos" class="summary-value text-red">$0.00</span>
+          </div>
+          <div class="summary-card highlight">
+            <span class="summary-label">Ganancia Neta</span>
+            <span id="resumenNeta" class="summary-value text-green">$0.00</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- COLUMNA DERECHA -->
+      <div class="layout-col">
+        <section class="card">
+          <h2>Tendencia de Ganancia Neta</h2>
+          <div class="chart-container">
+            <canvas id="gananciasChart"></canvas>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="history-header">
+            <h2>Historial de Registros</h2>
+            <button id="btnExportar" class="btn btn-small btn-outline">Exportar Excel (CSV)</button>
+          </div>
+          <div id="listaRegistros" class="history-list">
+            <!-- Carga dinámicamente -->
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

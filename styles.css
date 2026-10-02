@@ -1,0 +1,439 @@
+* {
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background-color: #111111;
+  color: #f2f2f2;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* =================================================== */
+/* FONDO ANIMADO DE LÍNEAS                            */
+/* =================================================== */
+.lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  margin: auto;
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.line {
+  position: relative;
+  width: 1px;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.line::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+  animation: drop 7s 0s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.line:nth-child(1)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FF4500 75%, #FF4500 100%);
+  animation-delay: 0.5s;
+}
+
+.line:nth-child(2)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #32CD32 75%, #32CD32 100%);
+  animation-delay: 1s;
+}
+
+.line:nth-child(3)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #1E90FF 75%, #1E90FF 100%);
+  animation-delay: 1.5s;
+}
+
+.line:nth-child(4)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FFD700 75%, #FFD700 100%);
+  animation-delay: 2s;
+}
+
+.line:nth-child(5)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #8A2BE2 75%, #8A2BE2 100%);
+  animation-delay: 2.5s;
+}
+
+.line:nth-child(6)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #20B2AA 75%, #20B2AA 100%);
+  animation-delay: 3s;
+}
+
+.line:nth-child(7)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #DC143C 75%, #DC143C 100%);
+  animation-delay: 3.5s;
+}
+
+.line:nth-child(8)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #00FA9A 75%, #00FA9A 100%);
+  animation-delay: 4s;
+}
+
+.line:nth-child(9)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FF1493 75%, #FF1493 100%);
+  animation-delay: 4.5s;
+}
+
+.line:nth-child(10)::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #00BFFF 75%, #00BFFF 100%);
+  animation-delay: 5s;
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+/* =================================================== */
+/* DASHBOARD Y CONTENEDORES                           */
+/* =================================================== */
+.app-container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.logo-img {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.header h1 {
+  color: #facc15;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.header p {
+  color: #a0aec0;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+.header .tagline {
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.layout-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =================================================== */
+/* TARJETAS Y ELEMENTOS CON TRANSPARENCIA             */
+/* =================================================== */
+.card {
+  background-color: rgba(36, 48, 68, 0.02);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(59, 76, 104, 0.6);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #e5e7eb;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+label {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+input {
+  background-color: rgba(26, 35, 50, 0.7);
+  border: 1px solid rgba(59, 76, 104, 0.7);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.btn {
+  width: 100%;
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: #facc15;
+  color: #111827;
+}
+
+.btn-secondary {
+  background-color: rgba(75, 85, 99, 0.8);
+  color: #ffffff;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid #3b4c68;
+  color: #facc15;
+}
+
+.btn-small {
+  width: auto;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+}
+
+/* RESUMEN DE TOTALES */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.summary-card {
+  background-color: rgba(36, 48, 68, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(59, 76, 104, 0.6);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.summary-card.highlight {
+  border-color: rgba(250, 204, 21, 0.6);
+  background-color: rgba(36, 48, 68, 0.65);
+}
+
+.summary-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-bottom: 4px;
+}
+
+.summary-value {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.text-gray { color: #e5e7eb; }
+.text-red { color: #f87171; }
+.text-green { color: #4ade80; }
+
+.chart-container {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.history-header h2 {
+  margin-bottom: 0;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.history-item {
+  background-color: rgba(26, 35, 50, 0.65);
+  border: 1px solid rgba(59, 76, 104, 0.5);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-date {
+  font-weight: 700;
+  color: #facc15;
+  font-size: 0.88rem;
+}
+
+.item-details {
+  font-size: 0.78rem;
+  color: #d1d5db;
+  margin-top: 3px;
+}
+
+.item-note {
+  font-style: italic;
+  color: #a0aec0;
+}
+
+.item-right {
+  text-align: right;
+}
+
+.item-net {
+  display: block;
+  font-weight: 700;
+  color: #4ade80;
+  font-size: 1.05rem;
+}
+
+.item-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.action-edit { color: #60a5fa; }
+.action-delete { color: #f87171; }
+
+.hidden { display: none; }
+.empty-msg {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 0.85rem;
+  padding: 16px 0;
+}
+
+/* =================================================== */
+/* RESPONSIVE DESIGN (MEDIA QUERIES)                  */
+/* =================================================== */
+@media (min-width: 640px) {
+  body {
+    padding: 24px;
+  }
+  .header h1 {
+    font-size: 1.9rem;
+  }
+  .logo-img {
+    width: 110px;
+    height: 110px;
+  }
+  .chart-container {
+    height: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 20px;
+  }
+  .history-list {
+    max-height: 380px;
+  }
+  .chart-container {
+    height: 240px;
+  }
+}
